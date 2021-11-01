@@ -5,7 +5,10 @@ api_key=None
 
 def configure_request(app):
     '''
-    
+    A functiom that calls the api_key
+
+    Args:
+        app
     '''
 
     global api_key
@@ -13,6 +16,12 @@ def configure_request(app):
 
 
 def get_news(country, category):
+    '''
+    A function that requests the json file for the news.
+
+    Args:
+        country & category
+    '''
 
     get_news_url = 'http://newsapi.org/v2/top-headlines?country={}&category={}&apiKey={}'.format(country, category, api_key)
 
@@ -28,7 +37,13 @@ def get_news(country, category):
 
     return news_results
 
-def process_news_results(news_list):    
+def process_news_results(news_list):
+    '''
+    Function that processes the news results.
+
+    Args:
+        news_list
+    '''    
     
     news_results = []
     
@@ -38,12 +53,16 @@ def process_news_results(news_list):
         author = news_item.get('author')
         if author==None:
             author=source_name
+
         elif author==' ' or author=='':
             author=source_name
+
         elif len(author)>40:
             author=source_name
+
         elif author[0:4]=="http":
             author=source_name
+
         title = news_item.get('title')
         url = news_item.get('url')
         image_url = news_item.get('urlToImage')        
