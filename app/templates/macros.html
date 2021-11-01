@@ -1,0 +1,18 @@
+{% macro displayNewsList(news_list) %}    
+
+{% for item in news_list %}
+
+<div class="col-xs-12 col-md-4">
+    <div class="card h-100">
+        <img class="card-img-top" src="{{item.url_to_image}}" alt="{{item.source_name}}" onerror="imgError(this);">
+        <div class="card-body">
+          <h5 class="card-title">{{item.published_at}}</h5>
+          <p class="card-text"><a href="{{item.url}}" target="_blank">{{item.title}}</a></p>
+          <p class="card-text">- {{item.author}}</p>                              
+        </div>
+    </div>
+</div>
+
+{% endfor %} 
+
+{% endmacro %}
