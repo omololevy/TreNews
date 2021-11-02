@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% import 'macros.html' as macro%}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <!--Sidenav-->
+        <div class="col-md-3">
+            <div class="jumbotron jumbotron1">
+                <div class="row">
+                    <div class="col-xs-12 brand">
+                        <a href="/"><h1>TreNews</h1></a>
+                    </div>
+                </div>
+                <div class="row border-b">
+                    <div class="col-xs-12 date">
+                        <p id="date"></p>
+                        <p id="time"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p><a href="/breaking">Breaking News</a></p>
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-8 open-topics">
+                                <p>Topics</p>
+                            </div>
+                            <div class="col-xs-4 text-right open-topics">
+                                <span id="topics" class="glyphicon glyphicon-menu-up"></span>
+                            </div>
+                            <div class="col-xs-12 topics">
+                                <div class="row lists">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <p><a href="/categories/general">General</a></p>
+                                        <p><a href="/categories/business">Business</a></p>
+                                        <p><a href="/categories/entertainment">Entertainment</a></p>
+                                        <p><a href="/categories/health">Health</a></p>
+                                        <p><a href="/categories/science">Science</a></p>
+                                        <p><a href="/categories/technology">Technology</a></p>
+                                        <p><a href="/categories/sports">Sports</a></p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                               
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-8 open-sources">
+                                <p>Sources</p>
+                            </div>
+                            <div class="col-xs-4 text-right open-sources">
+                                <span id="sources" class="glyphicon glyphicon-menu-down"></span>
+                            </div>
+                            <div class="col-xs-12 sources">
+                                <div class="row lists">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        {{macro.displaySources(sources)}}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>                                               
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-8 open-countries">
+                                <p>Countries</p>
+                            </div>
+                            <div class="col-xs-4 text-right open-countries">
+                                <span id="countries" class="glyphicon glyphicon-menu-down"></span>
+                            </div>
+                            <div class="col-xs-12 countries">
+                                <div class="row lists">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <p><a href="/countries/us">USA</a></p>
+                                        <p><a href="/countries/ca">Canada</a></p>
+                                        <p><a href="/countries/gb">United Kingdom</a></p>
+                                        <p><a href="/countries/au">Australia</a></p>
+                                        <p><a href="/countries/de">Germany</a></p>
+                                        <p><a href="/countries/it">Italy</a></p>
+                                        <p><a href="/countries/fr">France</a></p>
+                                        <p><a href="/countries/nl">Netherlands</a></p>
+                                        <p><a href="/countries/nz">New Zealand</a></p>
+                                        <p><a href="/countries/ru">Russia</a></p>
+                                        <p><a href="/countries/za">South Africa</a></p>
+                                        <p><a href="/countries/in">India</a></p>
+                                        <p><a href="/countries/mx">Mexico</a></p>
+                                        <p><a href="/countries/jp">Japan</a></p>
+                                        <p><a href="/countries/il">Israel</a></p>
+                                        <p><a href="/countries/cn">China</a></p> 
+                                        <p><a href="/countries/ke">Kenya</a></p>
+                                        <p><a href="/countries/ug">Uganda</a></p>
+                                        <p><a href="/countries/tz">Tanzania</a></p>                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Content section-->
+        <div class="col-md-6">
+            <div class="jumbotron jumbotron2 news-sources">
+                
+                <div class="row display-flex">
+                    <div class="col-xs-12 heading">
+                        <h2>{{title}}</h2>
+                    </div>
+
+                    {% if news_list %}
+
+                    {{ macro.displayNewsList(news_list) }} 
+
+                    {% else %}
+
+                    <div class="col-xs-12 text-center mt-4">
+                        <h3>No articles found.</h3>
+                    </div>
+
+                    {% endif %}
+                                                        
+                </div>
+            </div>
+        </div>
+
+
+        <!--Right column section-->
+        <div class="col-xs-12 col-md-3">
+            <div class="jumbotron jumbotron3">
+                <form>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {% if source_title %}
+
+                            <label>Search {{source_title}}</label>
+                            <div class="input-group">
+                                <input type="text" name="from_source" class="form-control" placeholder="Search article" required>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit"><span class="fa fa-search"></span></button>
+                                </span>
+                            </div>
+
+                            {% else %}
+
+                            <label>Search articles</label>
+                            <div class="input-group">
+                                <input type="text" name="topic_query" class="form-control" placeholder="Search topic" required>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit"><span class="fa fa-search"></span></button>
+                                </span>
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% if news_list %}
+
+            <div class="jumbotron jumbotron4">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>Top Story | <span class="head-suffix text-muted">{{title}}</span></h2>
+                        <p class="headline"><strong><a href="{{news_list[0].url}}" target="_blank">{{news_list[0].title}}</a></strong></p>
+                        <h5>{{news_list[0].source_name}}</h5>
+                        <h5>{{news_list[0].published_at}}</h5>
+                        <p>{{news_list[0].description}}</p>
+                        <p>{{news_list[0].content}}</p>
+                        <p>- {{news_list[0].author}}</p>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}
