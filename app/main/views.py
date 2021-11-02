@@ -99,3 +99,35 @@ def news_category(id):
     else:
         return render_template('news_list.html', title=title, news_list=category_news, sources=sources)   
 
+
+@main.route('/countries/<id>')
+def news_country(id):
+    country_news=get_news(id, "general")
+    title=countries_dict[id]
+    sources=get_sources()
+
+    topic_name = request.args.get('topic_query')
+
+    if topic_name:
+        return redirect(url_for('.news_topic', query=topic_name))
+    
+    else:
+        return render_template('news_list.html', title=title, news_list=country_news, sources=sources)    
+
+
+@main.route('/topic/<query>')
+def news_topic(query):
+    query_name_list = query.split(" ")
+    query_name_format = "+".join(query_name_list)
+    articles=search_topic(query_name_format)
+    title="Articles: "+query
+    sources=get_sources()
+
+    topic_name = request.args.get('topic_query')
+
+    if topic_name:
+        return redirect(url_for('.news_topic', query=topic_name))
+    
+    else:
+        return render_template('news_list.html', title=title, news_list=articles, sources=sources)
+
