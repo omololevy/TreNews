@@ -27,6 +27,9 @@ countries_dict={
 @main.route('/')
 @main.route('/home')
 def index():
+    '''
+    Function that fetches the top articles or news.
+    '''
     top_news=get_news("us", "general")
 
     cnn=news_from_source("cnn")
@@ -56,6 +59,12 @@ def index():
 
 @main.route('/source/<id>')
 def news_source(id):
+    '''
+    Function that fetches and displays the source of the news.
+
+    Args:
+        source id
+    '''
     news_list=news_from_source(id)
     title=news_list[0].source_name
     source_id=id
@@ -72,6 +81,9 @@ def news_source(id):
 
 @main.route('/breaking')
 def breaking_news():
+    '''
+    Function that fetches and returns the breaking news from various sources, country, etc 
+    '''
     breaking_news=get_news("us", "general")
     title="Breaking News"
     sources=get_sources()
@@ -87,6 +99,12 @@ def breaking_news():
 
 @main.route('/categories/<id>')
 def news_category(id):
+    '''
+    Function that determines the news category and places them in relevant categories
+
+    Args:
+        categoories
+    '''
     category_news=get_news("us", id)
     title=id.capitalize()
     sources=get_sources()
@@ -102,6 +120,12 @@ def news_category(id):
 
 @main.route('/countries/<id>')
 def news_country(id):
+    '''
+    Function that fetches the news country of origin from the country dict and displays or sorts them
+
+    Args:
+        country news
+    '''
     country_news=get_news(id, "general")
     title=countries_dict[id]
     sources=get_sources()
@@ -117,6 +141,12 @@ def news_country(id):
 
 @main.route('/topic/<query>')
 def news_topic(query):
+    '''
+    Function that sorts the news in accordance to the topic of discussion or interest
+    
+    Args:
+        query
+    '''
     query_name_list = query.split(" ")
     query_name_format = "+".join(query_name_list)
     articles=search_topic(query_name_format)
@@ -134,6 +164,7 @@ def news_topic(query):
 
 @main.route('/fromSource/<source_nm>/<this_source>/<query>')
 def news_in_source(source_nm, this_source, query):
+
     source_id=this_source
     query_name_list = query.split(" ")
     query_name_format = "+".join(query_name_list)
