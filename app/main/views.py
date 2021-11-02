@@ -69,7 +69,7 @@ def news_source(id):
     else:
         return render_template('news_list.html', title=title, news_list=news_list, source_title=title, sources=sources)
 
-#####################################################
+
 @main.route('/breaking')
 def breaking_news():
     breaking_news=get_news("us", "general")
@@ -131,3 +131,22 @@ def news_topic(query):
     else:
         return render_template('news_list.html', title=title, news_list=articles, sources=sources)
 
+
+@main.route('/fromSource/<source_nm>/<this_source>/<query>')
+def news_in_source(source_nm, this_source, query):
+    source_id=this_source
+    query_name_list = query.split(" ")
+    query_name_format = "+".join(query_name_list)
+    articles=search_from_source(query_name_format, source_id)
+    source_title=source_nm
+    title=source_nm+": "+query
+    sources=get_sources()
+
+    topic_name = request.args.get('from_source')
+
+    if topic_name:
+        return redirect(url_for('.news_in_source', source_nm=source_title, this_source=source_id, query=topic_name ))
+    
+    else:
+        return render_template('news_list.html', title=title, source_title=source_title, news_list=articles, sources=sources)
+    
