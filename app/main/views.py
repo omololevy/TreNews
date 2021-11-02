@@ -69,4 +69,33 @@ def news_source(id):
     else:
         return render_template('news_list.html', title=title, news_list=news_list, source_title=title, sources=sources)
 
+#####################################################
+@main.route('/breaking')
+def breaking_news():
+    breaking_news=get_news("us", "general")
+    title="Breaking News"
+    sources=get_sources()
+
+    topic_name = request.args.get('topic_query')
+
+    if topic_name:
+        return redirect(url_for('.news_topic', query=topic_name))
+    
+    else:
+        return render_template('news_list.html', title=title, news_list=breaking_news, sources=sources)    
+
+
+@main.route('/categories/<id>')
+def news_category(id):
+    category_news=get_news("us", id)
+    title=id.capitalize()
+    sources=get_sources()
+
+    topic_name = request.args.get('topic_query')
+
+    if topic_name:
+        return redirect(url_for('.news_topic', query=topic_name))
+    
+    else:
+        return render_template('news_list.html', title=title, news_list=category_news, sources=sources)   
 
