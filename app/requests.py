@@ -76,8 +76,11 @@ def process_news_results(news_list):
         
     return news_results
 
-
 def news_from_source(source_id):
+    '''
+    Function to fetches the articles from various sources
+
+    '''
   
     get_url = 'http://newsapi.org/v2/everything?sources={}&pageSize=30&apiKey={}'.format(source_id, api_key)
 
@@ -95,6 +98,9 @@ def news_from_source(source_id):
     return results
 
 def get_sources():
+    '''
+    Function that uses the url request and returns the available sources
+    '''
 
     get_sources_url = 'https://newsapi.org/v2/sources?country=us&category=general&language=en&apiKey={}'.format(api_key)
 
@@ -112,6 +118,12 @@ def get_sources():
 
 
 def process_sources_results(sources_list):
+    '''
+    Function that returns results from sources
+
+    Args:
+        sources_list
+    '''
 
     sources_results=[]
 
@@ -125,6 +137,12 @@ def process_sources_results(sources_list):
 
 
 def search_topic(query):
+    '''
+    Function that requests the sorting of results according to the topic of discussion or focus
+
+    Args:
+        query
+    '''
     search_topic_url = 'https://newsapi.org/v2/everything?q={}&sortBy=relevancy,publishedAt&pageSize=30&apiKey={}'.format(query, api_key)
     with urllib.request.urlopen(search_topic_url) as url:
         search_topic_data = url.read()
@@ -140,6 +158,12 @@ def search_topic(query):
 
 
 def search_from_source(query, source):
+    '''
+    Function that sends requests and returns search results from sources
+
+    Args:
+        query, source
+    '''
     search_topic_url = 'https://newsapi.org/v2/everything?q={}&sortBy=relevancy,publishedAt&pageSize=30&sources={}&apiKey={}'.format(query, source, api_key)
     with urllib.request.urlopen(search_topic_url) as url:
         search_topic_data = url.read()
@@ -155,6 +179,12 @@ def search_from_source(query, source):
 
 
 def date_pipe(date):
+    '''
+    Function for the formatting of date for each card in the page
+
+    Args:
+        date
+    '''
     dd=date[8:10]
     mm=date[5:7]
     yyyy=date[0:4]    
