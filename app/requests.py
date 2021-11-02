@@ -109,3 +109,33 @@ def get_sources():
             sources_results = process_sources_results(sources_results_list)
 
     return sources_results
+
+
+def process_sources_results(sources_list):
+
+    sources_results=[]
+
+    for source in sources_list:
+        source_id=source.get('id')
+        source_name=source.get('name')
+
+        source_obj=Sources(source_id, source_name)
+        sources_results.append(source_obj)
+    return sources_results
+
+
+def search_topic(query):
+    search_topic_url = 'https://newsapi.org/v2/everything?q={}&sortBy=relevancy,publishedAt&pageSize=30&apiKey={}'.format(query, api_key)
+    with urllib.request.urlopen(search_topic_url) as url:
+        search_topic_data = url.read()
+        search_topic_response = json.loads(search_topic_data)
+
+        search_topic_results = None
+
+        if search_topic_response['articles']:
+            search_topic_list = search_topic_response['articles']
+            search_topic_results = process_news_results(search_topic_list)
+
+    return search_topic_results
+
+
