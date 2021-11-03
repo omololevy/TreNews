@@ -22,6 +22,18 @@ The app looks like this:
   ![Image](./app/static/images/demo.png)
 
 ## Setup instructions
+* Create a virtual environment in your project directory through the terminal with the command: <br>
+```$ python3.9 -m venv --without-pip virtual```
+
+* Activate the virtual environment:<br>
+```$ source virtual/bin/activate ```
+
+* Install pip for installing python packages:<br>
+```$ curl https://bootstrap.pypa.io/get-pip.py | python```
+
+* Install flask module:<br>
+```$ pip install flask```
+
 * Clone the program from the [online repo](https://github.com/omololevy/TreNews)
 * Click on the <button style="background-color:green;"><a href= "https://github.com/omololevy/TreNews" style= "color:white">code</a> </button> button to clone or download
 
@@ -68,6 +80,8 @@ The app looks like this:
 * HTML
 * JavaScript
 * CSS
+* Bootstrap
+* JQuery
 * Flask
 
 ## Pending Issues
