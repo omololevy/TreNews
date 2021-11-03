@@ -14,7 +14,7 @@ In this app a user is able to explore various news categories including breaking
 
 ## Project live site
   This is the live [link to the repo ](https://github.com/omololevy/TreNews) <br>
-   This is the live [link to the app ](https://github.com/omololevy/TreNews)
+   This is the live [link to the app ](https://trenews.herokuapp.com/)
 
 
 ## Homepage Demo
@@ -86,6 +86,7 @@ The app looks like this:
 
 ## Pending Issues
 * The footer is not yet polished to the required state.
+* Adjusting the the navbar to work effectively besides the sidebars.
 
 * Therefore, you can make a [pull request](https://github.com/omololevy/TreNews/pulls) to this repo improve it or adjust functionalities.
 
