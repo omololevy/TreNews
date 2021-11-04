@@ -1,4 +1,4 @@
-# TreNews News_API
+# TreNews ( ```News_API```)
 #### This is a project on a python language to implement the News-Api App.
 
  
@@ -12,9 +12,9 @@ This is an application that will help the user with a list and preview news arti
 
 In this app a user is able to explore various news categories including breaking news, business, sports among others. Users can also check out news articles from specific media houses, and from specific countries. One is able to search topics from around the globe, and for a more refined search, find articles from specific media houses. The app gives the time an article was posted, its source and author, and a brief content description. Tap on article links to read full articles on the source websites.
 
-## Project live site
-  This is the live [link to the repo ](https://github.com/omololevy/TreNews) <br>
-   This is the live [link to the app ](https://trenews.herokuapp.com/)
+## Project live sites
+  * This is the live [link to the repo ](https://github.com/omololevy/TreNews) <br>
+  * This is the live [link to the app ](https://trenews.herokuapp.com/)
 
 
 ## Homepage Demo
@@ -28,7 +28,7 @@ The app looks like this:
 * Activate the virtual environment:<br>
 ```$ source virtual/bin/activate ```
 
-* Install pip for installing python packages:<br>
+* Install pip for installing other necessary python packages:<br>
 ```$ curl https://bootstrap.pypa.io/get-pip.py | python```
 
 * Install flask module:<br>
@@ -91,8 +91,8 @@ The app looks like this:
 * Therefore, you can make a [pull request](https://github.com/omololevy/TreNews/pulls) to this repo improve it or adjust functionalities.
 
 ## Support and contact details
-Contact me @omololevy@gmail.com
+Contact me omololevy@gmail.com
 ### License
-The project is under [MIT license](https://github.com/omololevy/TreNews/blob/master/LICENSE) 
-Copyright &copy; 2021.All rigths reserved
+The project is under [MIT LICENSE](https://github.com/omololevy/TreNews/blob/master/LICENSE) 
+Copyright &copy; 2021.All rights reserved
   
