@@ -10,7 +10,7 @@ class ArticleTest(unittest.TestCase):
         '''
         Set up method that will run before every Test
         '''
-        self.new_article = NewsArticle("CNN", "John Doe", "Christmas in the City", "/home", "/image", "30-05-2020", "Lorem", "Ipsum")
+        self.new_article = NewsArticle("CNN", "John Doe", "Christmas in the City", "/home", "/image", "01-01-2023", "Oh", "Boy")
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_article,NewsArticle))
