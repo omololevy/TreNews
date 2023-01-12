@@ -3,9 +3,10 @@ import os
 class Config:
     '''
     The main configuration class for the application
+    50541531a99e4478a9dd963ee517e274
     '''
     SECRET_KEY=os.environ.get('SECRET_KEY')
-    NEWS_API_KEY=os.environ.get('NEWS_API_KEY')
+    NEWS_API_KEY="50541531a99e4478a9dd963ee517e274"
 
 
 class ProdConfig(Config):
